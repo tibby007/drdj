@@ -6,8 +6,338 @@
     <title>Dr. DJ's Time Management Hub</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* ...all your existing CSS remains unchanged... */
-        /* (your long style block here, not repeated for brevity) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 100px;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .hero-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 40px;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subheadline {
+            font-size: 1.25rem;
+            color: #4a4a4a;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* AI Tools Section */
+        .ai-tools {
+            padding: 100px 0;
+            background: #fafafa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 60px;
+            letter-spacing: -0.02em;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .tool-card {
+            background: #ffffff;
+            padding: 48px 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .tool-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #dc2626;
+            margin-bottom: 16px;
+        }
+
+        .tool-card p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .gold-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #1a1a1a;
+            padding: 16px 32px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(255, 215, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .gold-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, #FFA500, #FFD700);
+        }
+
+        /* Embedded Chat Section */
+        .chat-section {
+            background: #ffffff;
+            padding: 48px 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f0f0f0;
+        }
+
+        .chat-section h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #dc2626;
+            margin-bottom: 32px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-photo {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            object-fit: cover;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #4a4a4a;
+        }
+
+        .about-text p {
+            margin-bottom: 24px;
+        }
+
+        /* Recognition Section */
+        .recognition {
+            padding: 100px 0;
+            background: #fafafa;
+        }
+
+        .recognition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .recognition-card {
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease;
+        }
+
+        .recognition-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .recognition-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #dc2626;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .recognition-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #dc2626;
+            margin-bottom: 48px;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 16px 24px;
+            border-radius: 12px;
+            background: #fafafa;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            background: #f0f0f0;
+        }
+
+        .contact-item i {
+            font-size: 1.4rem;
+            color: #dc2626;
+        }
+
+        .contact-item.email i {
+            color: #FFD700;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero .subheadline {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .tool-card {
+                padding: 32px 24px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .about-photo {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+
+            .recognition-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .hero-photo {
+                width: 160px;
+                height: 160px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        /* Additional refinements */
+        .hero, .about, .contact {
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+        }
     </style>
 </head>
 <body>
@@ -76,8 +406,35 @@
         <div class="container">
             <h2 class="section-title">Recognition & Leadership</h2>
             <div class="recognition-grid">
-                <!-- ...your recognition cards stay the same... -->
-                <!-- (not repeated for brevity) -->
+                <div class="recognition-card">
+                    <h3><i class="fas fa-award"></i> ABWA Honors</h3>
+                    <p>2021 American Business Woman and Top Ten Business Woman of the American Business Women's Association</p>
+                </div>
+                
+                <div class="recognition-card">
+                    <h3><i class="fas fa-handshake"></i> Chamber Excellence</h3>
+                    <p>2020 Ambassador of the Year - Douglas County Chamber of Commerce</p>
+                </div>
+                
+                <div class="recognition-card">
+                    <h3><i class="fas fa-star"></i> EncourageHer Award</h3>
+                    <p>Inaugural 2022 EncourageHer Award recipient from Douglas County Chamber of Commerce</p>
+                </div>
+                
+                <div class="recognition-card">
+                    <h3><i class="fas fa-book"></i> Who's Who Recognition</h3>
+                    <p>Featured in Who's Who in Black Atlanta and approved for biographical record in Who's Who in America</p>
+                </div>
+                
+                <div class="recognition-card">
+                    <h3><i class="fas fa-users"></i> Healthcare Leadership</h3>
+                    <p>Vice Chair of Hospital Authority Board of Douglas County and Wellstar Regional Health Board member</p>
+                </div>
+                
+                <div class="recognition-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Education Advocacy</h3>
+                    <p>Immediate Past Chair of Partners in Education of Douglas County, Inc.</p>
+                </div>
             </div>
         </div>
     </section>
